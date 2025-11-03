@@ -12,7 +12,9 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@formspree/react": "^3.0.0",
     "@mui/material": "^7.3.4",
+    "emailjs-com": "^3.2.0",
     "framer-motion": "^12.23.24",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.552.0",

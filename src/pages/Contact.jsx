@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 import "../styles/Contact.css";
 import profilePic from "/gifs/contact.gif";
 import { ToastContainer, toast, Slide } from "react-toastify";
@@ -23,43 +24,54 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const formUrl = "https://formspree.io/f/mldoagep"; // Replace with your Formspree ID
 
-    const response = await fetch(formUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone || "Not provided",
+      company: formData.company || "Not provided",
+      subject: formData.subject,
+      message: formData.message,
+      time: new Date().toLocaleString(),
+    };
 
-    if (response.ok) {
-      toast.success("🎉 Message sent successfully!", {
-        className: "toon-toast-success",
-        icon: "🚀",
-      });
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        subject: "",
-        message: "",
-        consent: false,
-      });
-    } else {
-      toast.error("😢 Oops! Something went wrong.", {
-        className: "toon-toast-error",
-        icon: "💥",
-      });
-    }
+    emailjs
+      .send(
+        "service_ena02zb", // 🔹 Replace with your EmailJS Service ID
+        "template_0t52c3q", // 🔹 Replace with your EmailJS Template ID
+        templateParams,
+        "Jsh2DEYi1ONP79iRQ" // 🔹 Replace with your Public Key
+      )
+      .then(
+        () => {
+          toast.success("🎉 Message sent successfully!", {
+            className: "toon-toast-success",
+            icon: "🚀",
+          });
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            company: "",
+            subject: "",
+            message: "",
+            consent: false,
+          });
+        },
+        (error) => {
+          console.error("FAILED...", error.text);
+          toast.error("😢 Oops! Message could not be sent.", {
+            className: "toon-toast-error",
+            icon: "💥",
+          });
+        }
+      );
   };
 
   return (
     <section className="contact-container">
-      {/* === HERO === */}
       <div className="contact-hero">
         <div className="contact-left">
           <img src={profilePic} alt="Phanindra Reddy" className="contact-img" />
@@ -74,20 +86,31 @@ export default function Contact() {
           </p>
 
           <div className="contact-links">
-            <a href="mailto:phanindrareddy0210@gmail.com" target="_blank" rel="noreferrer">
+            <a
+              href="mailto:phanindrareddy0210@gmail.com"
+              target="_blank"
+              rel="noreferrer"
+            >
               📧 phanindrareddy0210@gmail.com
             </a>
-            <a href="https://www.linkedin.com/in/phanindrareddy" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.linkedin.com/in/phanindrareddy"
+              target="_blank"
+              rel="noreferrer"
+            >
               💼 LinkedIn
             </a>
-            <a href="https://github.com/phanindrareddy2006" target="_blank" rel="noreferrer">
+            <a
+              href="https://github.com/phanindrareddy2006"
+              target="_blank"
+              rel="noreferrer"
+            >
               🧠 GitHub
             </a>
           </div>
         </div>
       </div>
 
-      {/* === CONTACT FORM === */}
       <form className="contact-form" onSubmit={handleSubmit}>
         <h2 className="form-title">Send Me a Message 💬</h2>
 
@@ -109,11 +132,14 @@ export default function Contact() {
             required
           />
           <input
-            type="text"
+            type="tel"
             name="phone"
             placeholder="Phone (Optional)"
             value={formData.phone}
             onChange={handleChange}
+            pattern="\d{10}"
+            maxLength="10"
+            title="Please enter a valid 10-digit phone number"
           />
           <input
             type="text"
@@ -130,6 +156,8 @@ export default function Contact() {
             onChange={handleChange}
             required
           />
+        
+
           <input
             type="text"
             name="message"
@@ -137,8 +165,9 @@ export default function Contact() {
             value={formData.message}
             onChange={handleChange}
             required
+            className="form-message"
           />
-        </div>
+          </div>
 
         <div className="form-consent">
           <label>
@@ -158,22 +187,12 @@ export default function Contact() {
         </button>
       </form>
 
-      {/* === TOAST CONTAINER === */}
       <ToastContainer
         position="top-center"
         autoClose={3000}
         hideProgressBar
         transition={Slide}
-        newestOnTop={false}
-        closeOnClick
-        pauseOnHover={false}
-        draggable={false}
       />
-
-      {/* === FLOATING BUBBLES === */}
-      <div className="bubble contact-bubble1"></div>
-      <div className="bubble contact-bubble2"></div>
-      <div className="bubble contact-bubble3"></div>
     </section>
   );
 }

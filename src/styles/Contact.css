@@ -192,7 +192,7 @@
 /* === TOONCORE TOASTIFY STYLING === */
 .toon-toast-success {
   background: linear-gradient(135deg, #8a6fd1, #a48eff);
-  color: white !important;
+  color: green !important;
   border-radius: 16px !important;
   box-shadow: 0 6px 18px rgba(138, 111, 209, 0.3);
   font-weight: 600;
@@ -203,7 +203,7 @@
 
 .toon-toast-error {
   background: linear-gradient(135deg, #ff6b6b, #ff9b9b);
-  color: white !important;
+  color: red !important;
   border-radius: 16px !important;
   box-shadow: 0 6px 18px rgba(255, 90, 90, 0.3);
   font-weight: 600;
