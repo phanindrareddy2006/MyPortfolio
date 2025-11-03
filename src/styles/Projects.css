@@ -1,0 +1,174 @@
+/* === ToonCore Projects (ZigZag + Scroll Reveal Edition) === */
+.projects-container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f4ff 100%);
+  color: #222;
+  position: relative;
+  overflow-x: hidden;
+  padding-bottom: 100px;
+}
+
+/* === HERO === */
+.projects-hero {
+  text-align: center;
+  padding: 100px 8% 60px;
+  animation: fadeUp 1.5s ease forwards;
+}
+
+.projects-title {
+  font-size: 3rem;
+  color: #333;
+  font-weight: 700;
+}
+
+.toon-text {
+  color: #8a6fd1;
+  text-shadow: 0 3px 10px rgba(138, 111, 209, 0.3);
+}
+
+.projects-sub {
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* === PROJECT BANNERS === */
+.project-banner {
+  width: 85%;
+  margin: 50px auto;
+  padding: 40px 30px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 25px rgba(138, 111, 209, 0.15);
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.9s ease;
+}
+
+.project-banner.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-banner.featured {
+  border: 2px solid rgba(138, 111, 209, 0.4);
+  box-shadow: 0 10px 30px rgba(138, 111, 209, 0.25);
+}
+
+.project-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.project-content.reverse {
+  flex-direction: row-reverse;
+}
+
+.project-image img {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 15px;
+  filter: drop-shadow(0 6px 10px rgba(138, 111, 209, 0.25));
+  transition: transform 0.6s ease;
+}
+
+.project-banner:hover .project-image img {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.project-text {
+  flex: 1;
+  text-align: left;
+}
+
+.project-text h2 {
+  color: #7b5ed3;
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.project-desc {
+  color: #333;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.project-caption {
+  margin-top: 10px;
+  color: #8a6fd1;
+  font-style: italic;
+}
+
+/* === Project Buttons === */
+.project-link {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #8a6fd1, #a48eff);
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.project-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(138, 111, 209, 0.3);
+}
+
+/* === FLOATING BUBBLES === */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at top left, #ffffff, #d8ccff);
+  opacity: 0.5;
+  animation: bubbleFloat 6s ease-in-out infinite;
+}
+
+.project-bubble1 { width: 120px; height: 120px; top: 10%; left: 10%; }
+.project-bubble2 { width: 80px; height: 80px; bottom: 15%; right: 15%; animation-delay: 1s; }
+.project-bubble3 { width: 60px; height: 60px; top: 25%; right: 30%; animation-delay: 2s; }
+
+@keyframes bubbleFloat {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(-20px); opacity: 0.9; }
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(60px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .project-content {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .project-content.reverse {
+    flex-direction: column !important;
+  }
+
+  .project-image img {
+    width: 140px;
+    margin-bottom: 15px;
+  }
+
+  .project-text {
+    text-align: center;
+  }
+
+  .projects-title {
+    font-size: 2.2rem;
+  }
+
+  .projects-sub {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,191 @@
+/* === ToonCore Skills Page (Glass + Cartoon Captions Edition) === */
+.skills-container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f4ff 100%);
+  color: #222;
+  position: relative;
+  overflow-x: hidden;
+  padding-bottom: 100px;
+}
+
+/* === HERO === */
+.skills-hero {
+  text-align: center;
+  padding: 100px 8% 60px;
+  animation: fadeUp 1.5s ease forwards;
+}
+
+.skills-title {
+  font-size: 3rem;
+  color: #333;
+  font-weight: 700;
+}
+
+.toon-text {
+  color: #8a6fd1;
+  text-shadow: 0 3px 10px rgba(138, 111, 209, 0.3);
+}
+
+.skills-sub {
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* === SKILL BANNERS === */
+.skills-banner {
+  width: 85%;
+  margin: 50px auto;
+  padding: 40px 30px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 25px rgba(138, 111, 209, 0.15);
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.9s ease;
+  text-align: center;
+}
+
+.skills-banner.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skills-banner h2 {
+  color: #7b5ed3;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+}
+
+/* === GRID === */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+}
+
+/* === BADGES === */
+.skill-badge {
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(138, 111, 209, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  animation: floatBadge 5s ease-in-out infinite;
+}
+
+.skill-badge img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 4px 6px rgba(138, 111, 209, 0.2));
+}
+
+.skill-badge span {
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.skill-badge:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(138, 111, 209, 0.3);
+}
+
+/* === CAPTIONS === */
+.skills-caption {
+  font-size: 1rem;
+  color: #6a5acd;
+  font-style: italic;
+  margin-top: 25px;
+  text-shadow: 0 2px 8px rgba(138, 111, 209, 0.15);
+  animation: fadeUp 1.3s ease-in-out;
+}
+
+/* === FLOATING EFFECT === */
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* === BUBBLES === */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at top left, #ffffff, #d8ccff);
+  opacity: 0.5;
+  animation: bubbleFloat 6s ease-in-out infinite;
+}
+
+.skills-bubble1 { width: 100px; height: 100px; top: 12%; left: 10%; }
+.skills-bubble2 { width: 80px; height: 80px; bottom: 18%; right: 12%; animation-delay: 1.5s; }
+.skills-bubble3 { width: 60px; height: 60px; top: 35%; right: 25%; animation-delay: 2.5s; }
+
+@keyframes bubbleFloat {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(-20px); opacity: 0.9; }
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(60px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.skill-badge img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 8px;
+  transition: transform 0.3s ease;
+}
+
+.skill-badge:hover img {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.skill-badge .icon {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+.skill-badge span {
+  display: block;
+  font-weight: 600;
+  color: #333;
+}
+
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .skill-badge {
+    width: 90px;
+    height: 90px;
+  }
+
+  .skill-badge img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .skills-title {
+    font-size: 2.2rem;
+  }
+
+  .skills-sub {
+    font-size: 1rem;
+  }
+
+  .skills-caption {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+
+/* === Full-Screen Container === */
+.tooncore-container {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.tooncore-container.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* === Centered Content === */
+.tooncore-content {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  position: relative;
+  padding: 0 20px;
+}
+
+/* === SVG Logo === */
+.tooncore-logo {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Main ToonCore text animation */
+.tooncore-text {
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(64px, 8vw, 140px); /* balanced across all screens */
+  font-weight: 700;
+  fill: none;
+  stroke: url(#grad);
+  stroke-width: 3;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation:
+    drawText 3s ease forwards,
+    fillText 0.4s ease 3s forwards;
+  paint-order: stroke fill;
+}
+
+/* Draw stroke animation */
+@keyframes drawText {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Fill animation */
+@keyframes fillText {
+  to {
+    fill: url(#grad);
+    stroke: none;
+  }
+}
+
+/* === Tagline (Always Smaller and Below) === */
+.tooncore-tagline {
+  margin-top: 1rem;
+  font-family: "Poppins", sans-serif;
+  color: #8a6fd1;
+  font-weight: 500;
+  font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+  opacity: 0;
+  transform: translateY(8px);
+  animation: taglineIn 0.9s ease 1.3s forwards;
+}
+
+@keyframes taglineIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Sparkles === */
+.sparkles polygon {
+  fill: #eeddff;
+  opacity: 0;
+  transform-origin: center;
+  animation: sparklePulse 3s ease-in-out forwards;
+}
+.sparkles polygon:nth-child(1) { animation-delay: 0.5s; }
+.sparkles polygon:nth-child(2) { animation-delay: 1s; }
+.sparkles polygon:nth-child(3) { animation-delay: 1.6s; }
+
+@keyframes sparklePulse {
+  0% { transform: scale(0.6) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.15) rotate(6deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 0; }
+}
+
+/* === Responsive Tweaks === */
+
+/* Large desktops */
+@media (min-width: 1400px) {
+  .tooncore-text {
+    font-size: 120px; /* cap the size */
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .tooncore-text {
+    font-size: clamp(52px, 9vw, 100px);
+  }
+  .tooncore-tagline {
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    margin-top: 0.8rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 600px) {
+  .tooncore-text {
+    font-size: clamp(180px, 13vw, 360px);
+  }
+  .tooncore-tagline {
+    font-size: clamp(0.7rem, 3vw, 0.9rem);
+    margin-top: 0.6rem;
+  }
+}
+
