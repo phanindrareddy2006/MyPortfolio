@@ -63,6 +63,9 @@ export default function About() {
             <a href="https://github.com/phanindrareddy2006" target="_blank" rel="noreferrer">
               🧠 GitHub
             </a>
+            <a href="https://drive.google.com/file/d/1oOmTbEAREnlATSotBesEwrIHW9TBGaXh/view?usp=sharing" target="_blank" rel="noreferrer">
+              📄 CV
+            </a>
           </div>
         </div>
       </div>
