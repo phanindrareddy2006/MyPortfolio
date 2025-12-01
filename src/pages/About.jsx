@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "../styles/About.css";
-import myCV from "/CV/Phanindra-Resume.pdf";
+import myCV from "/Phanindra-Resume.pdf";
 
 
 // === Cartoon images ===
