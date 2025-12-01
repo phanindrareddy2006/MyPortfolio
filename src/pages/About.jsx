@@ -1,11 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import "../styles/About.css";
+import myCV from "/CV/Phanindra-Resume.pdf";
+
 
 // === Cartoon images ===
 import profilePic from "/gifs/me2.gif";
 import schoolImg from "/gifs/school.gif";
 import interImg from "/gifs/college.gif";
 import btechImg from "/gifs/university.gif";
+
 
 export default function About() {
   const bannersRef = useRef([]);
@@ -63,9 +66,11 @@ export default function About() {
             <a href="https://github.com/phanindrareddy2006" target="_blank" rel="noreferrer">
               🧠 GitHub
             </a>
-            <a href="https://drive.google.com/file/d/1oOmTbEAREnlATSotBesEwrIHW9TBGaXh/view?usp=sharing" target="_blank" rel="noreferrer">
+            <a
+              href={myCV}target="_blank"rel="noreferrer">
               📄 CV
             </a>
+
           </div>
         </div>
       </div>
